@@ -1,6 +1,6 @@
 package be.vdab.util;
 
-public class DatumException extends IllegalArgumentException{
+public class DatumException extends RuntimeException{
     public DatumException() {
     }
 

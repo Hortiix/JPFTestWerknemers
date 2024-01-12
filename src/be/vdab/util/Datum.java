@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Datum implements IDatum, Comparable<Datum> {
     private final int dag, maand, jaar;
-    private final int[] DAG_MAAND = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    private static final int[] DAG_MAAND = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public Datum(int dag, int maand, int jaar) {
         if (!isValidate(dag, maand, jaar)) throw new DatumException();

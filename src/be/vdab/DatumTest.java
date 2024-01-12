@@ -6,9 +6,7 @@ import be.vdab.util.DatumException;
 import java.util.ArrayList;
 
 public class DatumTest {
-    /*
-    *TODO test elke methode van Datum
-    */
+//TODO Better console text
 
 
     public static void main(String[] args) {
