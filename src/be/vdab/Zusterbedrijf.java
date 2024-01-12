@@ -14,13 +14,13 @@ public class Zusterbedrijf {
         this.bedrijf = leesBedrifFile(Bedrijf.PATH);
     }
 
-    public Bedrijf getBedrijf() {
-        return bedrijf;
+    public void tonenBedrijf() {
+         bedrijf.printLijst();
     }
 
-    public static Bedrijf leesBedrifFile (Path path){
-        try (var stream = new ObjectInputStream(Files.newInputStream(path))){
-            return  (Bedrijf) stream.readObject();
+    public static Bedrijf leesBedrifFile(Path path) {
+        try (var stream = new ObjectInputStream(Files.newInputStream(path))) {
+            return (Bedrijf) stream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

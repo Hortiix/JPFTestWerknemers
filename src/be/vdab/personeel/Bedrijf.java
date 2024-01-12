@@ -25,30 +25,35 @@ public class Bedrijf implements Serializable {
         return Collections.unmodifiableList(bedrijfLijst);
     }
 
-    public void voegWerknemerToe(Werknemer werknemer){
-        if (! bedrijfLijst.contains(werknemer)) bedrijfLijst.add(werknemer);
+    public void voegWerknemerToe(Werknemer werknemer) {
+        if (!bedrijfLijst.contains(werknemer)) bedrijfLijst.add(werknemer);
     }
-    public void printLijst(){
+
+    public void printLijst() {
         bedrijfLijst.forEach(System.out::println);
     }
-    public List<Werknemer> gesorteerdeLijst(){
+
+    public List<Werknemer> gesorteerdeLijst() {
         return bedrijfLijst.stream()
                 .sorted()
                 .toList();
     }
-    public List<Werknemer> lijstVanArbeiders(){
+
+    public List<Werknemer> lijstVanArbeiders() {
         return bedrijfLijst.stream()
                 .filter(werknemer -> werknemer.getClass().equals(Arbeider.class))
                 .toList();
     }
-    public double percentageMannelijkeWerknemers(){
+
+    public double percentageMannelijkeWerknemers() {
         double aantalMan = bedrijfLijst.stream()
                 .filter(werknemer -> werknemer.getGeslacht() == Geslacht.M)
                 .count();
-        return (aantalMan /bedrijfLijst.size())*100;
+        return (aantalMan / bedrijfLijst.size()) * 100;
     }
-    public void bewaarLijst(){
-        try(var stream = new ObjectOutputStream(Files.newOutputStream(PATH))) {
+
+    public void bewaarLijst() {
+        try (var stream = new ObjectOutputStream(Files.newOutputStream(PATH))) {
             stream.writeObject(this);
         } catch (IOException e) {
             throw new RuntimeException(e);

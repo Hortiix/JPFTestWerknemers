@@ -76,7 +76,7 @@ public abstract class Werknemer implements Comparable<Werknemer>, Serializable {
 
     @Override
     public String toString() {
-        return getPersoneelsnummer() + "\t" + getDatumInDienst() + "\t" + getNaam() + "\t" + getGeslacht() +"\t"+getVerloning();
+        return getPersoneelsnummer() + "\t" + getDatumInDienst() + "\t" + getNaam() + "\t" + getGeslacht() + "\t" + getVerloning();
     }
 
 }

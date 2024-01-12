@@ -1,6 +1,6 @@
 package be.vdab.util;
 
-public class WerknemersException extends RuntimeException{
+public class WerknemersException extends RuntimeException {
     public WerknemersException() {
     }
 

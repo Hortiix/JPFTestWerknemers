@@ -6,13 +6,11 @@ import be.vdab.util.DatumException;
 import java.util.ArrayList;
 
 public class DatumTest {
-//TODO Better console text
 
 
     public static void main(String[] args) {
         testConstructor();
         testEquals();
-        //testHashcode();
         testComparTo();
     }
 
@@ -21,12 +19,12 @@ public class DatumTest {
         System.out.println("TEST : equals");
         System.out.println("verwacht resultaat : datum sorter");
         ArrayList<Datum> datumLijst = new ArrayList<>();
-        datumLijst.add(new Datum(6,1,1990));
-        datumLijst.add(new Datum(7,1,1990));
-        datumLijst.add(new Datum(6,2,1990));
-        datumLijst.add(new Datum(1,1,1991));
-        datumLijst.add(new Datum(6,1,1989));
-        datumLijst.add(new Datum(28,9,2008));
+        datumLijst.add(new Datum(6, 1, 1990));
+        datumLijst.add(new Datum(7, 1, 1990));
+        datumLijst.add(new Datum(6, 2, 1990));
+        datumLijst.add(new Datum(1, 1, 1991));
+        datumLijst.add(new Datum(6, 1, 1989));
+        datumLijst.add(new Datum(28, 9, 2008));
 
         datumLijst.stream().sorted().forEach(System.out::println);
 
@@ -37,10 +35,10 @@ public class DatumTest {
         System.out.println();
         System.out.println("TEST : equals");
         System.out.println("verwacht resultaat : true , true , false , false");
-        Datum datum1 = new Datum(1,1,1584);
-        Datum datum2 = new Datum(1,1,1584);
+        Datum datum1 = new Datum(1, 1, 1584);
+        Datum datum2 = new Datum(1, 1, 1584);
         Datum datum3 = datum1;
-        Datum datum4 = new Datum(1,3,1584);
+        Datum datum4 = new Datum(1, 3, 1584);
         String datum5 = "1/1/1584";
         System.out.println(datum1.equals(datum2));
         System.out.println(datum1.equals(datum3));
@@ -67,13 +65,13 @@ public class DatumTest {
             System.out.println("resultaat: " + datum);
         }
         System.out.println("verwacht resultaat : DatumException");
-        String resultaat= null;
+        String resultaat = null;
         try {
             datum = new Datum(29, 2, 2023);
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
         System.out.println();
         System.out.println("TEST dag = 31 in a 30 dag maand ");
@@ -81,10 +79,10 @@ public class DatumTest {
 
         try {
             datum = new Datum(31, 6, 2023);
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
         System.out.println();
         System.out.println("TEST dag < 1");
@@ -93,10 +91,10 @@ public class DatumTest {
 
         try {
             datum = new Datum(0, 6, 2023);
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
         System.out.println();
         System.out.println("TEST dag > 31");
@@ -105,10 +103,10 @@ public class DatumTest {
 
         try {
             datum = new Datum(98, 6, 2023);
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
 
         System.out.println();
@@ -118,10 +116,10 @@ public class DatumTest {
 
         try {
             datum = new Datum(12, 0, 2023);
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
         System.out.println();
         System.out.println("TEST maand > 12 ");
@@ -130,10 +128,10 @@ public class DatumTest {
 
         try {
             datum = new Datum(12, 13, 2023);
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
         System.out.println();
         System.out.println("TEST jaar < 1584 ");
@@ -141,11 +139,11 @@ public class DatumTest {
 
 
         try {
-            datum = new Datum(12, 5,1583 );
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+            datum = new Datum(12, 5, 1583);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
         System.out.println();
         System.out.println("TEST jaar > 4099 ");
@@ -153,11 +151,46 @@ public class DatumTest {
 
 
         try {
-            datum = new Datum(12, 5,4100 );
-        }catch (DatumException ex){
-            resultaat =  ex.getClass().getName();
-        }finally {
-            System.out.println("resultaat: " +  resultaat);
+            datum = new Datum(12, 5, 4100);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
+        }
+        System.out.println("_____TEST LIMITE____");
+        try {
+            datum = new Datum(1, 1, 1584);
+            resultaat = datum.toString();
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat moet: 1/1/1584");
+            System.out.println("resultaat: " + resultaat);
+        }
+        resultaat = null;
+        try {
+            datum = new Datum(31, 12, 1583);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
+        }
+        resultaat = null;
+        try {
+            resultaat = new Datum(31, 12, 4099).toString();
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat moet: 31/12/4099");
+            System.out.println("resultaat: " + resultaat);
+        }
+        resultaat = null;
+        try {
+            datum = new Datum(1, 1, 4100);
+        } catch (DatumException ex) {
+            resultaat = ex.getMessage();
+        } finally {
+            System.out.println("resultaat: " + resultaat);
         }
 
 

@@ -19,8 +19,8 @@ public class BedrijfApp {
         bedrijfTest(bedrijf);
         bedrijf.bewaarLijst();
         System.out.println("lees and print");
-        var  zusterbedrijf = new Zusterbedrijf();
-        zusterbedrijf.getBedrijf().printLijst();
+        var zusterbedrijf = new Zusterbedrijf();
+        zusterbedrijf.tonenBedrijf();
 
     }
 
@@ -70,7 +70,7 @@ public class BedrijfApp {
         return mijnBedrijf;
     }
 
-    private static void bedrijfTest(Bedrijf mijnBedrijf ) {
+    private static void bedrijfTest(Bedrijf mijnBedrijf) {
 
 
         System.out.println("______________________________________________");
@@ -89,7 +89,7 @@ public class BedrijfApp {
         System.out.println("______________________________________________");
         mijnBedrijf.lijstVanArbeiders().forEach(System.out::println);
         System.out.println("______________________________________________");
-        System.out.println("result verwacht is 50 -> result is : " +mijnBedrijf.percentageMannelijkeWerknemers());
+        System.out.println("result verwacht is 50 -> result is : " + mijnBedrijf.percentageMannelijkeWerknemers());
 
     }
 
@@ -149,9 +149,5 @@ public class BedrijfApp {
         } finally {
             System.out.println("vewacht geen exceptie -> werneemer : " + a + " exceptie message : " + result);
         }
-
-        //TODO GESLACHT
-        //TODO UURLOON
-        //TODO MAANDGEG
     }
 }

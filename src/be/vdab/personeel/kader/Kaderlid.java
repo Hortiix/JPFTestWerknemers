@@ -12,11 +12,13 @@ import java.math.BigDecimal;
 public class Kaderlid extends Bediende implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
     public enum Functietitel {
         DIRECTEUR,
         CEO,
         MANAGER
     }
+
     private Functietitel functietitel;
 
     public Kaderlid(int personeelsnummer, WerknemersDatum datumInDienst, String naam, Geslacht geslacht, BigDecimal maandwedde, Functietitel functietitel) {
@@ -35,6 +37,6 @@ public class Kaderlid extends Bediende implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString()+"\t"+ functietitel;
+        return super.toString() + "\t" + functietitel;
     }
 }

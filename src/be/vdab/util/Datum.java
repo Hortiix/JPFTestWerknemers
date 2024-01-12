@@ -4,7 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Datum implements IDatum, Comparable<Datum> , Serializable {
+public class Datum implements IDatum, Comparable<Datum>, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -12,16 +12,16 @@ public class Datum implements IDatum, Comparable<Datum> , Serializable {
     private static final int[] DAG_MAAND = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public Datum(int dag, int maand, int jaar) {
-        if (!isValidate(dag, maand, jaar)) throw new DatumException("ongeldige datum");
+        if (!isValidate(dag, maand, jaar)) throw new DatumException("ongeldige mdag");
         this.dag = dag;
         this.maand = maand;
         this.jaar = jaar;
     }
 
     private boolean isValidate(int dag, int maand, int jaar) {
-        if (jaar < 1584 || jaar > 4099) return false;
-        if (maand > 12 || maand < 1) return false;
-        if (dag < 1) return false;
+        if (jaar < 1584 || jaar > 4099) throw new DatumException("ongeldige jaar");
+        if (maand > 12 || maand < 1) throw new DatumException("ongeldige maand");
+        if (dag < 1) throw new DatumException("ongeldige dag");
         if (maand == 2 && isSchrikkeljaar(jaar)) return dag <= DAG_MAAND[2] + 1;
         return dag <= DAG_MAAND[maand];
 

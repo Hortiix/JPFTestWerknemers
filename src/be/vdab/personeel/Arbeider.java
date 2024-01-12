@@ -24,6 +24,7 @@ public class Arbeider extends Werknemer implements Serializable {
     public BigDecimal getVerloning() {
         return uurloon.multiply((BigDecimal.valueOf(7.6).multiply(BigDecimal.valueOf(65))).divide(BigDecimal.valueOf(3), 2, RoundingMode.HALF_EVEN));
     }
+
     public BigDecimal getUurloon() {
         return uurloon;
     }
