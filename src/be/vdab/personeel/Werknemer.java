@@ -3,9 +3,13 @@ package be.vdab.personeel;
 import be.vdab.util.Geslacht;
 import be.vdab.util.WerknemersDatum;
 import be.vdab.util.WerknemersException;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
-public abstract class Werknemer implements Comparable<Werknemer> {
+public abstract class Werknemer implements Comparable<Werknemer>, Serializable {
+    private static final long serialVersionUID = 1L;
     private final int personeelsnummer;
     private WerknemersDatum datumInDienst;
     private String naam;
@@ -18,6 +22,8 @@ public abstract class Werknemer implements Comparable<Werknemer> {
         setNaam(naam);
         setGeslacht(geslacht);
     }
+
+    public abstract BigDecimal getVerloning();
 
     public WerknemersDatum getDatumInDienst() {
         return datumInDienst;
@@ -52,7 +58,7 @@ public abstract class Werknemer implements Comparable<Werknemer> {
 
     @Override
     public int compareTo(Werknemer o) {
-        return o.getPersoneelsnummer() - this.personeelsnummer;
+        return this.personeelsnummer - o.getPersoneelsnummer();
     }
 
     @Override
@@ -70,6 +76,7 @@ public abstract class Werknemer implements Comparable<Werknemer> {
 
     @Override
     public String toString() {
-        return getPersoneelsnummer() + "\t" + getDatumInDienst() + "\t" + getNaam() + "\t" + getGeslacht();
+        return getPersoneelsnummer() + "\t" + getDatumInDienst() + "\t" + getNaam() + "\t" + getGeslacht() +"\t"+getVerloning();
     }
+
 }

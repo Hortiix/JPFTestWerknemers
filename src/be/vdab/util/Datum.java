@@ -1,13 +1,18 @@
 package be.vdab.util;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Datum implements IDatum, Comparable<Datum> {
+public class Datum implements IDatum, Comparable<Datum> , Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private final int dag, maand, jaar;
     private static final int[] DAG_MAAND = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public Datum(int dag, int maand, int jaar) {
-        if (!isValidate(dag, maand, jaar)) throw new DatumException();
+        if (!isValidate(dag, maand, jaar)) throw new DatumException("ongeldige datum");
         this.dag = dag;
         this.maand = maand;
         this.jaar = jaar;

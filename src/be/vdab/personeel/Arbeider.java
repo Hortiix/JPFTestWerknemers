@@ -4,9 +4,13 @@ import be.vdab.util.Geslacht;
 import be.vdab.util.WerknemersDatum;
 import be.vdab.util.WerknemersException;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 
-public class Arbeider extends Werknemer {
+public class Arbeider extends Werknemer implements Serializable {
+    private static final long serialVersionUID = 1L;
     private BigDecimal uurloon;
     private static final BigDecimal MIN_UURLOON = BigDecimal.valueOf(9.76d);
 
@@ -17,10 +21,9 @@ public class Arbeider extends Werknemer {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "\t" + uurloon;
+    public BigDecimal getVerloning() {
+        return uurloon.multiply((BigDecimal.valueOf(7.6).multiply(BigDecimal.valueOf(65))).divide(BigDecimal.valueOf(3), 2, RoundingMode.HALF_EVEN));
     }
-
     public BigDecimal getUurloon() {
         return uurloon;
     }

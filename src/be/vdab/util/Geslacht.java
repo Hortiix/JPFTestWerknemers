@@ -1,8 +1,17 @@
 package be.vdab.util;
 
 public enum Geslacht {
-    M("man"),V("vrouw");
+    M("man"), V("vrouw");
 
-    Geslacht(String geslacht ) {
+    private String geslacht;
+
+    Geslacht(String geslacht) {
+        this.geslacht = geslacht;
     }
+
+    @Override
+    public String toString() {
+        return geslacht;
+    }
+
 }

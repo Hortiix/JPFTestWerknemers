@@ -5,10 +5,13 @@ import be.vdab.util.Geslacht;
 import be.vdab.util.WerknemersDatum;
 import be.vdab.util.WerknemersException;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Kaderlid extends Bediende {
-
+public class Kaderlid extends Bediende implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public enum Functietitel {
         DIRECTEUR,
         CEO,
@@ -28,5 +31,10 @@ public class Kaderlid extends Bediende {
     public void setFunctietitel(Functietitel functietitel) {
         if (functietitel == null) throw new WerknemersException("moet en functietitel doorgeven");
         this.functietitel = functietitel;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"\t"+ functietitel;
     }
 }
